@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cn.ksmcbrigade.scbc.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "ChatMixin",
+    "ConnectingMixin",
+    "InGameHudMixin",
+    "KeyBindingMixin",
+    "MinecraftMixin",
+    "ModStatusMixin",
+    "PlayerMixin",
+    "ScreenMixin",
+    "SimpleOptionMixin",
+    "TimerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

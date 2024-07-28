@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "scbc",
+  "version": "${version}",
+  "name": "SimpleClientBaseCore",
+  "description": "Simple! Simple! Simple Client!",
+  "accessWidener": "scbc.accesswidener",
+  "authors": [
+    "KSmc_brigade"
+  ],
+  "contact": {
+    "repo": "https://github.com/yiyuyan/SimpleClientBaseCore"
+  },
+  "license": "MIT",
+  "icon": "assets/scbc/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "preLaunch": [
+      "cn.ksmcbrigade.scbc.SimpleClientBaseCore"
+    ],
+    "client": [
+      "cn.ksmcbrigade.scbc.client.SimpleClientBaseCoreClient"
+    ]
+  },
+  "mixins": [
+    "scbc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

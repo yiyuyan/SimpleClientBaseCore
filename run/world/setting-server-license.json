@@ -1,0 +1,6 @@
+{
+  "enabled": false,
+  "autoRemove": false,
+  "authPerMinute": 4,
+  "generalAllowance": 0
+}

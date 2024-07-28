@@ -1,0 +1,3 @@
+accessWidener   v1  named
+accessible field net/minecraft/client/network/ClientPlayNetworkHandler lastSeenMessagesCollector Lnet/minecraft/network/message/LastSeenMessagesCollector;
+accessible field net/minecraft/client/network/ClientPlayNetworkHandler messagePacker Lnet/minecraft/network/message/MessageChain$Packer;
