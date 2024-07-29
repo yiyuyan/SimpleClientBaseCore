@@ -31,8 +31,7 @@ public class Hack {
         if(config!=null && nameConfig){
             this.config.file = new File(this.name);
         }
-        ConfigUtils.keysList.put(this.getEnName(),this.key);
-        SimpleClientBaseCore.config.config.savaObject("keys");
+        ConfigUtils.putKeys(this.getEnName(),this.key);
     }
 
     public Hack(Type type, String name, boolean enabled, int key, Config config) throws IOException, NoSuchFieldException, IllegalAccessException {
@@ -57,13 +56,15 @@ public class Hack {
         MinecraftClient MC = MinecraftClient.getInstance();
         if(enabled){
             enabled(MC);
-            ConfigUtils.enablesList.add(this.getEnName());
+            ConfigUtils.addOrRemoveAllEnabled(true,this.getEnName());
+            //ConfigUtils.enablesList.add(this.getEnName());
         }
         else{
             disabled(MC);
-            ConfigUtils.enablesList.remove(this.getEnName());
+            ConfigUtils.addOrRemoveAllEnabled(false,this.getEnName());
+            //ConfigUtils.enablesList.remove(this.getEnName());
         }
-        SimpleClientBaseCore.config.config.savaArrays("enables");
+        //SimpleClientBaseCore.config.config.savaArrays("enables");
         if(change) HackManager.HackGui.reopen();
     }
 

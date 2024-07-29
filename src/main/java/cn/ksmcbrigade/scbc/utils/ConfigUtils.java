@@ -3,6 +3,7 @@ package cn.ksmcbrigade.scbc.utils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +26,8 @@ public class ConfigUtils {
     public static ArrayList<String> enablesList = new ArrayList<>();
     public static Map<String,Integer> keysList = new HashMap<>();
 
+    public static Map<String,Integer> launchKeysList = new HashMap<>();
+
     public static boolean init = false;
 
     public ConfigUtils() throws IOException {
@@ -40,7 +43,10 @@ public class ConfigUtils {
             JsonParser.parseString(FileUtils.read(enables)).getAsJsonArray().forEach(f -> enablesList.add(f.getAsString()));
 
             JsonObject keysL = JsonParser.parseString(FileUtils.read(keys)).getAsJsonObject();
-            keysL.keySet().forEach(f -> keysList.put(f,keysL.get(f).getAsInt()));
+            keysL.keySet().forEach(f -> {
+                keysList.put(f,keysL.get(f).getAsInt());
+                launchKeysList.put(f,keysL.get(f).getAsInt());
+            });
 
             init = true;
         }
@@ -75,5 +81,24 @@ public class ConfigUtils {
         JsonObject object = new JsonObject();
         c.keySet().forEach(m -> object.addProperty(m,c.get(m)));
         FileUtils.write(k,object.toString(),true);
+    }
+
+    public static void putKeys(String key,int code){
+        if(!launchKeysList.containsKey(key)){
+            keysList.put(key,code);
+        }
+    }
+
+    public static void addOrRemoveAllEnabled(boolean add,String name){
+        if(add){
+            if(!enablesList.contains(name)){
+                enablesList.add(name);
+            }
+        }
+        else{
+            while (enablesList.contains(name)){
+                enablesList.remove(name);
+            }
+        }
     }
 }

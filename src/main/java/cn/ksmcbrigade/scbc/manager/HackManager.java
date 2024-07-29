@@ -18,10 +18,10 @@ import static cn.ksmcbrigade.scbc.manager.HackFrame.instance;
 public class HackManager {
     public static ArrayList<Hack> hacks = new ArrayList<>();
 
-    public static ModuleList moduleList;
-    public static RainbowUi rainbowUi;
+    public static volatile ModuleList moduleList;
+    public static volatile RainbowUi rainbowUi;
 
-    public static Timer timer;
+    public static volatile Timer timer;
 
     static {
         try {
@@ -33,12 +33,33 @@ public class HackManager {
         }
     }
 
+    public static boolean init = false;
+
     public HackManager(){
         //for(int i=0;i<50;i++){
-            hacks.add(moduleList);
-            hacks.add(rainbowUi);
-            hacks.add(timer);
+        while (moduleList == null) {
+            Thread.onSpinWait();
+        }
+        hacks.add(moduleList);
+        while (rainbowUi == null) {
+            Thread.onSpinWait();
+        }
+        hacks.add(rainbowUi);
+        while (timer == null) {
+            Thread.onSpinWait();
+        }
+        hacks.add(timer);
+        init = true;
         //}
+    }
+
+    public static Hack get(String name){
+        for(Hack hack:hacks){
+            if(hack.getEnName().equalsIgnoreCase(name)){
+                return hack;
+            }
+        }
+        return null;
     }
 
     public static boolean enabled(String name){

@@ -7,7 +7,8 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:stony_shore": "2024-07-28 19:16:35 +0800"
+      "minecraft:stony_shore": "2024-07-28 19:16:35 +0800",
+      "minecraft:forest": "2024-07-29 08:37:58 +0800"
     },
     "done": false
   },
