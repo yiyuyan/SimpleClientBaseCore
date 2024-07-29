@@ -4,12 +4,14 @@ import cn.ksmcbrigade.scbc.client.SimpleClientBaseCoreClient;
 import cn.ksmcbrigade.scbc.manager.CommandManager;
 import cn.ksmcbrigade.scbc.manager.HackManager;
 import cn.ksmcbrigade.scbc.utils.ModUninstallUtils;
+import cn.ksmcbrigade.scbc.utils.SoundUtils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.world.WorldTickCallback;
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -38,6 +40,14 @@ public class SimpleClientBaseCore implements PreLaunchEntrypoint {
     public void onPreLaunch() {
 
         config.logger("Hello Simple Client!");
+
+        try {
+            if(!new File("simple").exists()) new File("simple").mkdirs();
+            SoundUtils.ThisToLocal("ding.wav","simple/ding.wav");
+            config.logger("Copy sound file to local done.");
+        } catch (IOException e) {
+            SimpleClientBaseCore.config.error("error in copy the ding wav file to local.",e);
+        }
 
         try {
             config.config.getArrays("uninstalls").forEach(f -> {

@@ -1,3 +1,4 @@
 {
-  "gui.scbc.last_server": "LastServer"
+  "gui.scbc.last_server": "LastServer",
+  "sound.scbc.ding":"SimpleClientHackEnabled"
 }

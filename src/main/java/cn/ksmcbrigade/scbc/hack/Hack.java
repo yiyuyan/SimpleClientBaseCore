@@ -3,6 +3,7 @@ package cn.ksmcbrigade.scbc.hack;
 import cn.ksmcbrigade.scbc.SimpleClientBaseCore;
 import cn.ksmcbrigade.scbc.manager.HackManager;
 import cn.ksmcbrigade.scbc.utils.ConfigUtils;
+import cn.ksmcbrigade.scbc.utils.SoundUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.resource.language.I18n;
@@ -58,6 +59,8 @@ public class Hack {
             enabled(MC);
             ConfigUtils.addOrRemoveAllEnabled(true,this.getEnName());
             //ConfigUtils.enablesList.add(this.getEnName());
+            SoundUtils.playSoundFromJar("simple/ding.wav");
+            SimpleClientBaseCore.config.logger("play a wav.");
         }
         else{
             disabled(MC);

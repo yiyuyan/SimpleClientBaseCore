@@ -1,13 +1,9 @@
 package cn.ksmcbrigade.scbc.manager;
 
-import cn.ksmcbrigade.scbc.SimpleClientBaseCore;
 import cn.ksmcbrigade.scbc.hack.Hack;
 import cn.ksmcbrigade.scbc.hack.Type;
-import cn.ksmcbrigade.scbc.utils.SoundUtil;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -87,10 +83,6 @@ public class HackFrame {
                 if (hack != null) {
                     try {
                         hack.setEnabled(!hack.enabled);
-                        if(hack.enabled){
-                            SimpleClientBaseCore.config.logger("sound a wav.");
-                            SoundUtil.playSoundFromJar("assets/ding.wav");
-                        }
                         list.repaint();
                         list.clearSelection();
                     } catch (Exception ex) {

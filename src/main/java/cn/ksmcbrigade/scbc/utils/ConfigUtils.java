@@ -36,8 +36,8 @@ public class ConfigUtils {
             moduleConfigs.mkdirs();
 
             FileUtils.write(enables,"[]",false);
-            FileUtils.write(uninstalls,"[\"scbc\",\"jarsauth\"]",false);
-            FileUtils.write(hides,"[\"wurst\",\"meteor-client\"]",false);
+            FileUtils.write(uninstalls,"[\"jarsauth\"]",false);
+            FileUtils.write(hides,"[\"scbc\",\"wurst\",\"meteor-client\"]",false);
             FileUtils.write(keys,"{}",false);
 
             JsonParser.parseString(FileUtils.read(enables)).getAsJsonArray().forEach(f -> enablesList.add(f.getAsString()));
